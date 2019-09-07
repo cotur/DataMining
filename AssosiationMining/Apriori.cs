@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace DataMining.AssociationMining
+namespace Cotur.DataMining.AssociationMining
 {
     public class DataFields
     {
