@@ -438,21 +438,21 @@ namespace Cotur.DataMining.AssociationMining
                 {
                     foreach (CNode node in EachLevelOfCNodes[nodeA.ElementIDs.Count - 1])
                     {
-                        if (node == nodeA)
+                        if (!aFound && node == nodeA)
                         {
                             nodeA = node;
                             aFound = true;
-                            break;
-                        }
-                    }
 
-                    foreach (CNode node in EachLevelOfCNodes[nodeB.ElementIDs.Count - 1])
-                    {
-                        if (node == nodeB)
+                            if(bFound)
+                                break;
+                        }
+
+                        if (!bFound && node == nodeB)
                         {
                             nodeB = node;
                             bFound = true;
-                            break;
+                            if (aFound)
+                                break;
                         }
                     }
 
