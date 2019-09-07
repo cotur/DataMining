@@ -21,6 +21,47 @@ namespace Cotur.DataMining.AssociationMining
             FillNames();
         }
 
+        public DataFields(int FieldCount, List<List<int>> Transactions, List<string> FieldNames = null)
+        {
+            this.Rows = new List<bool[]>();
+            foreach (List<int> transaction in Transactions)
+                this.Rows.Add(CreateRow(FieldCount, transaction));
+
+            if (FieldNames == null)
+                FillNames();
+            else
+                this.FieldNames = FieldNames;
+        }
+
+        public DataFields(int FieldCount, List<int[]> Transactions, List<string> FieldNames = null)
+        {
+            this.Rows = new List<bool[]>();
+            foreach (int[] transaction in Transactions)
+                this.Rows.Add(CreateRow(FieldCount, transaction));
+
+            if (FieldNames == null)
+                FillNames();
+            else
+                this.FieldNames = FieldNames;
+        }
+
+        private bool[] CreateRow(int size, List<int> idS)
+        {
+            bool[] row = new bool[size];
+            foreach (int id in idS)
+                row[id] = true;
+
+            return row;
+        }
+        private bool[] CreateRow(int size, int[] idS)
+        {
+            bool[] row = new bool[size];
+            foreach (int id in idS)
+                row[id] = true;
+
+            return row;
+        }
+
         private void FillNames()
         {
             for (int i = 0; i < Rows.First().Length; i++)
