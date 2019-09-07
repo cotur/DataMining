@@ -400,7 +400,6 @@ namespace Cotur.DataMining.AssociationMining
         {
             List<AssociationRule> Rules = new List<AssociationRule>();
 
-            int i = 0;
             foreach (List<CNode> CNodeLevel in EachLevelOfCNodes)
             {
                 if (CNodeLevel.First().ElementIDs.Count <= 1)
