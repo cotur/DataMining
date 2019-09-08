@@ -88,17 +88,13 @@ namespace Cotur.DataMining.AssociationMining
     public class Apriori
     {
         public DataFields Data;
-
         public List<CNode> CNodes = null;
-
         public List<List<CNode>> EachLevelOfNodes = new List<List<CNode>>();
-
         public List<AssociationRule> Rules;
         public Apriori(DataFields Data)
         {
             this.Data = Data;
         }
-
         public void CalculateCNodes(float minSupport)
         {
             this.CNodes = null;
@@ -106,7 +102,6 @@ namespace Cotur.DataMining.AssociationMining
             this.Rules = null;
             _CalculateCNodes(minSupport);
         }
-
         private void _CalculateCNodes(float minSupport, List<CNode> cNodes = null)
         {
             this.CNodes = cNodes ?? this.CNodes;
