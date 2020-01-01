@@ -98,7 +98,7 @@ namespace Cotur.DataMining.AssociationMining
         public void CalculateCNodes(float minSupport)
         {
             this.CNodes = null;
-            this.EachLevelOfNodes = null;
+            this.EachLevelOfNodes = new List<List<CNode>>();
             this.Rules = null;
             _CalculateCNodes(minSupport);
         }
