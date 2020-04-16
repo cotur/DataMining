@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Data;
+using Association;
 
 namespace Association
 {
@@ -25,7 +25,7 @@ namespace Association
         {
             if (minSupport <= 0)
             {
-                throw new Exception("Minimum support should be bigger than 0");
+                throw new Exception("Minimum support should be bigged than 0");
             }
 
             CNodes = null;
