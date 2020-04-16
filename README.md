@@ -53,8 +53,9 @@ List<int> transaction7 = new List<int>(){ 0, 1, 5, 7 };
 
 List<List<int>> Transactions = new List<List<int>>()
 				{ transaction1, transaction2, .., transaction7 };
-				
-DataFields data = new DataFields(Transactions);
+
+var maxColumn = Transactions.Max(x => x.Max());
+DataFields data = new DataFields(maxColumn, Transactions);
 ```
 And calculations
 ```
