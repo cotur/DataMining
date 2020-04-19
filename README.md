@@ -32,6 +32,7 @@ transaction 7# =>   1,1,0,0,0,1,0,1
 
 ### Apriori
 You can download this NuGet package individually: https://www.nuget.org/packages/Cotur.DataMining.Association
+
 Create DataFields object that contains your data.
 ```
 List<string> Names; // FieldNames
