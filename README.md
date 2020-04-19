@@ -2,8 +2,7 @@
 # DataMining
 
  Some DataMining Algorithms based on C#
- Now only Apriori Algorithm is provided.
-
+ 
 ### Depencies
 ```
 none
