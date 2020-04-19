@@ -73,7 +73,7 @@ namespace Cotur.DataMining.Association
             return FieldNames.Where((e, i) => elementIDs.Contains(i)).ToList();
         }
 
-        public static DataFields ReadFromFile(string filePath, char splitWith = ',', bool headIsInfo = true, string acceptAsTrue = "1")
+        public static DataFields ReadFromCsv(string filePath, char splitWith = ',', bool headIsInfo = true, string acceptAsTrue = "1")
         {
             List<string> fieldNames = null;
             List<bool[]> rows = new List<bool[]>();

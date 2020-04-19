@@ -60,7 +60,7 @@ namespace Cotur.DataMining.Association
         [Fact]
         public void Apriori_Market_Basket_One()
         {
-            var dataFields = DataFields.ReadFromFile(@"..\..\..\..\..\data\csv\small-market-basket.csv");
+            var dataFields = DataFields.ReadFromCsv(@"..\..\..\..\..\data\csv\small-market-basket.csv");
 
             var myApriori = new Apriori(dataFields);
 
@@ -82,7 +82,7 @@ namespace Cotur.DataMining.Association
         {
             var csvFilePath = @"..\..\..\..\..\data\csv\big-text-1.csv";
 
-            var dataFields = DataFields.ReadFromFile(csvFilePath);
+            var dataFields = DataFields.ReadFromCsv(csvFilePath);
 
             var myApriori = new Apriori(dataFields);
 
