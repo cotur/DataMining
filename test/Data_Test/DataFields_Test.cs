@@ -1,4 +1,4 @@
-using Association;
+using Cotur.DataMining.Association;
 using Shouldly;
 using System.Collections.Generic;
 using Xunit;

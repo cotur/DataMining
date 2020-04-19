@@ -1,20 +1,28 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageId>Cotur.DataMining.Association</PackageId>
+    <PackageId>Cotur.DataMining</PackageId>
     <Version>1.2.0</Version>
     <Authors>cotur</Authors>
     <Product>Datamining</Product>
-    <Description>Association Mining Algorithms
-- Apriori</Description>
+    <Description>
+      DataMining Algorithms
+
+      Existing Algorithms
+      - Apriori
+    </Description>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <RepositoryUrl>https://github.com/cotur/DataMining</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>DataMining Apriori MachineLearning Algorithm</PackageTags>
+    <PackageTags>DataMining MachineLearning Algorithm Apriori</PackageTags>
     <PackageReleaseNotes />
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Association\Association.csproj" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Include="..\..\LICENSE">
