@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Association;
 
-namespace Association
+namespace Cotur.DataMining.Association
 {
     public class CNode
     {
-        public List<int> ElementIDs;
-        public float Support;
+        public List<int> ElementIDs { get; private set; }
+        public float Support { get; private set; }
 
         private CNode()
         {
@@ -70,12 +69,14 @@ namespace Association
             {
                 newNode.ElementIDs.Add(item);
             }
+
+            newNode.Support = Support;
             return newNode;
         }
 
-        public string ToString(DataFields data)
+        public string ToDetailedString(DataFields dataFields)
         {
-            return string.Join(", ", data.GetElementsName(ElementIDs));
+            return string.Join(", ", dataFields.GetElementsName(ElementIDs));
         }
     }
 

@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Association;
 
-namespace Association
+namespace Cotur.DataMining.Association
 {
     public class Apriori
     {
-        public DataFields Data;
-        public List<CNode> CNodes = null;
-        public List<List<CNode>> EachLevelOfNodes = new List<List<CNode>>();
-        public List<AssociationRule> Rules;
+        public DataFields Data { get; private set; }
+        public List<CNode> CNodes { get; private set; } = null;
+        public List<List<CNode>> EachLevelOfNodes { get; private set; } = new List<List<CNode>>();
+        public List<AssociationRule> Rules { get; private set; }
 
         public Apriori(DataFields data)
         {

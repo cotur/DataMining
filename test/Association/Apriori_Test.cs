@@ -1,15 +1,20 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using Association;
 using Shouldly;
+using System.Collections.Generic;
+using System.Linq;
 using Xunit;
+using Xunit.Abstractions;
 
-namespace Association
+namespace Cotur.DataMining.Association
 {
     public class Apriori_Test
     {
+        private readonly ITestOutputHelper _testOutputHelper;
+
+        public Apriori_Test(ITestOutputHelper testOutputHelper)
+        {
+            _testOutputHelper = testOutputHelper;
+        }
+
         [Fact]
         public void Apriori_One()
         {
@@ -34,9 +39,9 @@ namespace Association
 
             var maxCol = transactions.Max(x => x.Max());
 
-            var data = new DataFields(maxCol, transactions);
+            var dataFields = new DataFields(maxCol, transactions);
 
-            var myApriori = new Apriori(data);
+            var myApriori = new Apriori(dataFields);
             var minimumSupport = 0.4f; // %40 Minimum Support
 
             myApriori.CalculateCNodes(minimumSupport);
@@ -44,6 +49,12 @@ namespace Association
             myApriori.Rules.ShouldNotBeNull();
             myApriori.Rules.Count.ShouldNotBe(0);
             myApriori.Rules.Count(x => x.Confidence >= .7f).ShouldBe(12);
+
+            _testOutputHelper.WriteLine("Top rules ordered by Confidence (Up to 10)");
+            foreach (var associationRule in myApriori.Rules.OrderByDescending(x => x.Confidence).Take(10))
+            {
+                _testOutputHelper.WriteLine(associationRule.ToDetailedString(dataFields));
+            }
         }
 
         [Fact]
@@ -58,6 +69,12 @@ namespace Association
             myApriori.Rules.ShouldNotBeNull();
             myApriori.Rules.Count.ShouldNotBe(0);
             myApriori.Rules.Count(x => x.Confidence >= .7f).ShouldBe(12);
+
+            _testOutputHelper.WriteLine("Top rules ordered by Confidence (Up to 10)");
+            foreach (var associationRule in myApriori.Rules.OrderByDescending(x => x.Confidence).Take(10))
+            {
+                _testOutputHelper.WriteLine(associationRule.ToDetailedString(dataFields));
+            }
         }
 
         [Fact]
@@ -67,10 +84,16 @@ namespace Association
 
             var dataFields = DataFields.ReadFromFile(csvFilePath);
 
-            var apriori = new Apriori(dataFields);
+            var myApriori = new Apriori(dataFields);
 
-            apriori.CalculateCNodes(0.003f);
-            apriori.Rules.Count.ShouldBeGreaterThan(0);
+            myApriori.CalculateCNodes(0.003f);
+            myApriori.Rules.Count.ShouldBeGreaterThan(0);
+
+            _testOutputHelper.WriteLine("Top rules ordered by Confidence (Up to 10)");
+            foreach (var associationRule in myApriori.Rules.OrderByDescending(x => x.Confidence).Take(10))
+            {
+                _testOutputHelper.WriteLine(associationRule.ToDetailedString(dataFields));
+            }
         }
     }
 }

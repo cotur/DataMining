@@ -1,20 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Association;
 
-namespace Association
+namespace Cotur.DataMining.Association
 {
     public class AssociationRule
     {
-        public CNode NodeAB;
-        public CNode NodeA;
-        public CNode NodeB;
+        public CNode NodeAB { get; private set; }
+        public CNode NodeA { get; private set; }
+        public CNode NodeB { get; private set; }
 
-        public float Confidence;
-        public float Lift;
-        public float Conviction;
-        public float Leverage;
-        public float Coverage;
+        public float Confidence { get; private set; }
+        public float Lift { get; private set; }
+        public float Conviction { get; private set; }
+        public float Leverage { get; private set; }
+        public float Coverage { get; private set; }
 
 
         public AssociationRule(CNode nodeAb, CNode nodeA, CNode nodeB)
@@ -60,15 +59,15 @@ namespace Association
             Coverage = NodeA.Support;
         }
 
-        private string GetCalc()
+        private string GetCalculationsAsString()
         {
             return
                 $"Confidence: {Confidence}, Lift: {Lift}, Conviction: {Conviction}, Leverage: {Leverage}, Coverage: {Coverage}";
         }
 
-        public string ToString(DataFields data)
+        public string ToDetailedString(DataFields dataFields)
         {
-            return NodeA.ToString(data) + " => " + NodeB.ToString(data) + " || " + GetCalc();
+            return NodeA.ToDetailedString(dataFields) + " => " + NodeB.ToDetailedString(dataFields) + " || " + GetCalculationsAsString();
         }
 
         public static List<AssociationRule> GetAllRules(List<List<CNode>> eachLevelOfCNodes)
