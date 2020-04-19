@@ -14,7 +14,6 @@ none
 
 NuGet Package That Includes All Algorithms: https://www.nuget.org/packages/Cotur.DataMining/
 
-You can dowload algorithms individually.
 
 ### Existing Algorithms
 
