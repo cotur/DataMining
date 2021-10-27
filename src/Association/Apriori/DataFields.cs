@@ -53,7 +53,7 @@ namespace Cotur.DataMining.Association.Apriori
         private bool[] CreateRow(int size, IEnumerable<int> idS)
         {
             var row = new bool[size + 1];
-            foreach (int id in idS)
+            foreach (var id in idS)
             {
                 row[id] = true;
             }
@@ -62,7 +62,7 @@ namespace Cotur.DataMining.Association.Apriori
         
         private void FillNames()
         {
-            for (int i = 0; i < Rows.First().Length; i++)
+            for (var i = 0; i < Rows.First().Length; i++)
             {
                 FieldNames.Add("Column " + i);
             }

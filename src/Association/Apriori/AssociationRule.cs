@@ -93,7 +93,7 @@ namespace Cotur.DataMining.Association.Apriori
             var rules = new List<AssociationRule>();
             var subsets = SubSetsOf<int>(node.ElementIDs).OrderBy(x => x.Count()).ToList();
 
-            for (int i = 1; i < (subsets.Count / 2); i++)
+            for (var i = 1; i < (subsets.Count / 2); i++)
             {
                 var nodeA = new CNode(subsets[i].ToList());
                 var nodeB = new CNode(subsets[subsets.Count - i - 1].ToList());

@@ -41,17 +41,9 @@ namespace Cotur.DataMining.Association.Apriori
         public void CalculateSupport(List<bool[]> warehouse)
         {
             Support = 0;
-            foreach (bool[] row in warehouse)
+            foreach (var row in warehouse)
             {
-                var confirmation = true;
-                foreach (int id in ElementIDs)
-                {
-                    if (row[id] == false)
-                    {
-                        confirmation = false;
-                        break;
-                    }
-                }
+                var confirmation = ElementIDs.All(id => row[id] != false);
 
                 if (confirmation)
                 { 

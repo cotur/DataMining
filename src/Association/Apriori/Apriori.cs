@@ -13,23 +13,20 @@ namespace Cotur.DataMining.Association.Apriori
 
         public Apriori(DataFields data)
         {
-            if (data == null)
-            {
-                throw new Exception("Apriori object can not be created with null DataFields");
-            }
-            Data = data;
+            Data = data ?? throw new Exception("Apriori object can not be created with null DataFields");
         }
 
         public void CalculateCNodes(float minSupport)
         {
             if (minSupport <= 0)
             {
-                throw new Exception("Minimum support should be bigged than 0");
+                throw new Exception("Minimum support should be bigger than 0");
             }
 
             CNodes = null;
             EachLevelOfNodes = new List<List<CNode>>();
             Rules = null;
+            
             _CalculateCNodes(minSupport);
         }
 
@@ -52,7 +49,7 @@ namespace Cotur.DataMining.Association.Apriori
             
             if (CNodes.Count > 1 && CalculateNextStep(minSupport))
             {
-                _CalculateCNodes(minSupport, this.CNodes);
+                _CalculateCNodes(minSupport, CNodes);
             }
 
             Rules = AssociationRule.GetLastLevelRules(EachLevelOfNodes);
@@ -110,7 +107,7 @@ namespace Cotur.DataMining.Association.Apriori
             if (tempList.Count >= 1)
             {
                 //this.CNodes = CNode.ClearSame(tempList);// => this action deletes last cNode
-                this.CNodes = tempList;
+                CNodes = tempList;
                 return true;
             }
             return false;
