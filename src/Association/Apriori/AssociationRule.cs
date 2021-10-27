@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Cotur.DataMining.Association
+namespace Cotur.DataMining.Association.Apriori
 {
     public class AssociationRule
     {

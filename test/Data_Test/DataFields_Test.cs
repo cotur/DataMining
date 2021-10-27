@@ -1,6 +1,6 @@
-using Cotur.DataMining.Association;
 using Shouldly;
 using System.Collections.Generic;
+using Cotur.DataMining.Association.Apriori;
 using Xunit;
 
 namespace Data_Test

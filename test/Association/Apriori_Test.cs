@@ -1,6 +1,7 @@
 using Shouldly;
 using System.Collections.Generic;
 using System.Linq;
+using Cotur.DataMining.Association.Apriori;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -41,7 +42,7 @@ namespace Cotur.DataMining.Association
 
             var dataFields = new DataFields(maxCol, transactions);
 
-            var myApriori = new Apriori(dataFields);
+            var myApriori = new Apriori.Apriori(dataFields);
             var minimumSupport = 0.4f; // %40 Minimum Support
 
             myApriori.CalculateCNodes(minimumSupport);
@@ -62,7 +63,7 @@ namespace Cotur.DataMining.Association
         {
             var dataFields = DataFields.ReadFromCsv(@"..\..\..\..\..\data\csv\small-market-basket.csv");
 
-            var myApriori = new Apriori(dataFields);
+            var myApriori = new Apriori.Apriori(dataFields);
 
             myApriori.CalculateCNodes(.4f);
 
@@ -84,7 +85,7 @@ namespace Cotur.DataMining.Association
 
             var dataFields = DataFields.ReadFromCsv(csvFilePath);
 
-            var myApriori = new Apriori(dataFields);
+            var myApriori = new Apriori.Apriori(dataFields);
 
             myApriori.CalculateCNodes(0.003f);
             myApriori.Rules.Count.ShouldBeGreaterThan(0);

@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>Cotur.DataMining.Association</PackageId>
+    <RootNamespace>Cotur.DataMining.Association</RootNamespace>
     <Version>1.2.0</Version>
     <Authors>cotur</Authors>
     <Product>Datamining</Product>
